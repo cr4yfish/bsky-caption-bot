@@ -116,6 +116,7 @@ export const runMainBotFeature = async () => {
             
             // check if already replied to this
             if(await alreadyRepliedToComment(mention)) {
+                console.log("Already responded to this comment")
                 return;
             }
 
@@ -130,8 +131,7 @@ export const runMainBotFeature = async () => {
             if(rootPost) {
                 try {
                     const classification = await classifyPost(rootPost);
-                    respondText = `Hi there! I'm a bot and I think this image is about: 
-                    ${classification}.
+                    respondText = `Hi there! I'm a bot and this is what I can see in the image: ${classification}.
                     `
                 } catch(e) {
                     const err = e as Error;
